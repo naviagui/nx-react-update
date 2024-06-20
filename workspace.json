@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "projects": {
+    "ent-portal": "apps/ent-portal",
+    "ent-portal-e2e": "apps/ent-portal-e2e"
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "root": "apps/ent-portal",
+  "sourceRoot": "apps/ent-portal/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/ent-portal",
+        "index": "apps/ent-portal/src/index.html",
+        "baseHref": "/",
+        "main": "apps/ent-portal/src/main.tsx",
+        "polyfills": "apps/ent-portal/src/polyfills.ts",
+        "tsConfig": "apps/ent-portal/tsconfig.app.json",
+        "assets": [
+          "apps/ent-portal/src/favicon.ico",
+          "apps/ent-portal/src/assets"
+        ],
+        "styles": ["apps/ent-portal/src/styles.scss"],
+        "scripts": [],
+        "webpackConfig": "@nrwl/react/plugins/webpack"
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/ent-portal/src/environments/environment.ts",
+              "with": "apps/ent-portal/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "options": {
+        "buildTarget": "ent-portal:build",
+        "hmr": true
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "ent-portal:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/ent-portal/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/ent-portal"],
+      "options": {
+        "jestConfig": "apps/ent-portal/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
