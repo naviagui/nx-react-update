@@ -1,6 +1,29 @@
 {
   "version": 2,
   "projects": {
+    "components": {
+      "root":"libs/components",
+      "sourceRoot": "libs/components/src",
+      "projectType": "library",
+      "targets": {
+        "storybook": {
+          "executor": "@nrwl/storybook:storybook",
+          "options": {
+            "uiFramework": "@storybook/react",
+            "port": 4400,
+            "config": {
+              "configFolder": "libs/components/.storybook"
+            }
+          },
+          "configurations": {
+            "ci": {
+              "quiet": true
+            }
+          }
+        }
+      }
+    },
+
     "ent-portal": "apps/ent-portal",
     "ent-portal-e2e": "apps/ent-portal-e2e"
   }
